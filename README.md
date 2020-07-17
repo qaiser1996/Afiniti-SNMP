@@ -221,12 +221,6 @@ Returns "Signal Value: <value>"
     SNMPv2-SMI::enterprises.53864.3.1.1.6.115.105.103.110.97.108 = STRING: "Signal Value: 10"
     ```
 
-# Design Approach and Choice
-As you can see I have used net-snmp for this purpose and extended snmpd to implement custom OIDs, I have used this approach as it is easier to identify the point of failure in this method for example if any one of the OID isn't working as it is supposed to, I will know from which shell script the error is coming from. It is always convenient for troubleshooting to use external/extended shell scripts as they can be run from bash terminal as well. The reason for choosing net-snmp and shell scripts is that it is native to linux environment hence I don't have to compromise on execution time. Another reason for choosing shell scripting is that it was recommended and perhaps preffered language as mentioned in the task description. This approach is scallable as well as many more shell scripts could be extended easily with this method. I have also added some error checking in scripts where it was required.
-
-# Testing
-Unfortunately due to limited time I couldn't use any automated testing tools to rigorously test the my implementation of the solution. I could only test the created OIDs manually.
-
 # Problems Faced
 These are the major problems that I had to face, there were others as well but they weren't so difficult to overcome.
   - Unable to start snmpd service:
@@ -248,9 +242,6 @@ These are the major problems that I had to face, there were others as well but t
   - In snmpd the files in `afinitiSignalSQL.sh` such `.env` and `query.sql` were not loaded
     - Reason: Unknown
       - Solution: Merged the files in one shell script file `afinitiSignalSQL.sh`
-
-# Alternate Approach
-I didn't knew anything about shell scripting snmp and I had hardly used linux before, I learned almost everything within the given time. If I didn't have time constraint or even if I had a little bit more experience using snmp libraries I would have created custom MIB but I couldn't due to limited time also I would like to mention that if I had only a day to do this task I may have had gone with python or java libraries for snmp or some other libraries with more communtiy support. And if I was allowed to do it in Windows I probably wouldn't have had taken this much time as I'm not as experienced with linux as I am with Windows. But as using native linux tools was recommended/preffered to complete this task so I opted for recommended language and snmp library.
 
 # Time Division
  - Time spent on research: 20%
